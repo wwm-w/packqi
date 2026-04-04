@@ -81,8 +81,10 @@ Copy the files from `dist/` to the corresponding MediaWiki system pages:
 
 Comments are preserved to indicate wiki editors where to find the original source code.
 
-
+Although the JS/TS linter will try its best to make it compatible (by transforming code and using pollyfills), the Oxc linter will warn you, which will result in more predictable and cleaner code.
 
 ## To-do
 - Implement testing with Vitest (requires mocking MediaWiki API)
 - Migrate to tsdown when rolldown matures enough (it bundles well, but downleveling is hard)
+- Refactor this PoC into an agnostic package
+- Add client-side scripts that link back to GitHub
