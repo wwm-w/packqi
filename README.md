@@ -7,37 +7,6 @@ Produces deployment-ready assets for a MediaWiki wiki. Source is written in mode
 > [!NOTE]
 > This was made specifically for the Where Winds Meet Wiki and MediaWiki 1.43+. You can fork this repository and adapt it to your needs. If there's enough interest, I may refactor into into an agnostic package in the future.
 
-## Why
-- Big wikis need to split their CSS files, leading to client-side @import calls.
-- Outdated linter does not accurately inform of issues or unsupported syntax
-- Writing JS for wikis is often a chore, as latest ECMAScript support has a few gotchas due to server-side parsing
-
-## Outputs
-
-| File | Loaded on |
-|------|-----------|
-| `dist/citizen.css` | Citizen skin only |
-| `dist/citizen.js` | Citizen skin only |
-| `dist/common.css` | All skins |
-| `dist/common.js` | All skins |
-
-## How it works
-
-**CSS** — [LightningCSS](https://lightningcss.dev/) bundles `src/css/citizen.css` and `src/css/common.css` (resolving `@import` chains) and compiles modern CSS for browsers with ≥ 0.25% global usage share.
-
-**JS/TS** — [tsup](https://tsup.egoist.dev/) (backed by esbuild) compiles `src/ts/citizen.ts` and `src/ts/common.ts` to IIFE bundles targeting Chrome 120. Provides MediaWiki API type information. Several syntax features that MediaWiki's ResourceLoader linter rejects are explicitly downleveled:
-
-| Feature | Compiled to |
-|---------|-------------|
-| Private fields / methods (`#x`) | WeakMap helpers |
-| Nullish coalescing (`??`) | ternary |
-| Optional chaining (`?.`) | `&&`-chain |
-| Public class fields | constructor assignment |
-
-`mediawiki`, `jquery`, and `oojs` are treated as externals so they provide type information.
-
-Comments are preserved to indicate wiki editors where to find the original source code.
-
 ## Requirements
 
 - [pnpm](https://pnpm.io/) ≥ 10
@@ -80,6 +49,39 @@ Copy the files from `dist/` to the corresponding MediaWiki system pages:
 | `dist/citizen.js` | `MediaWiki:Citizen.js` |
 | `dist/common.css` | `MediaWiki:Common.css` |
 | `dist/common.js` | `MediaWiki:Common.js` |
+
+## Why
+- Big wikis need to split their CSS files, leading to client-side @import calls.
+- Outdated linter does not accurately inform of issues or unsupported syntax
+- Writing JS for wikis is often a chore, as latest ECMAScript support has a few gotchas due to server-side parsing
+
+## Outputs
+
+| File | Loaded on |
+|------|-----------|
+| `dist/citizen.css` | Citizen skin only |
+| `dist/citizen.js` | Citizen skin only |
+| `dist/common.css` | All skins |
+| `dist/common.js` | All skins |
+
+## How it works
+
+**CSS** — [LightningCSS](https://lightningcss.dev/) bundles `src/css/citizen.css` and `src/css/common.css` (resolving `@import` chains) and compiles modern CSS for browsers with ≥ 0.25% global usage share.
+
+**JS/TS** — [tsup](https://tsup.egoist.dev/) (backed by esbuild) compiles `src/ts/citizen.ts` and `src/ts/common.ts` to IIFE bundles targeting Chrome 120. Provides MediaWiki API type information. Several syntax features that MediaWiki's ResourceLoader linter rejects are explicitly downleveled:
+
+| Feature | Compiled to |
+|---------|-------------|
+| Private fields / methods (`#x`) | WeakMap helpers |
+| Nullish coalescing (`??`) | ternary |
+| Optional chaining (`?.`) | `&&`-chain |
+| Public class fields | constructor assignment |
+
+`mediawiki`, `jquery`, and `oojs` are treated as externals so they provide type information.
+
+Comments are preserved to indicate wiki editors where to find the original source code.
+
+
 
 ## To-do
 - Implement testing with Vitest (requires mocking MediaWiki API)
