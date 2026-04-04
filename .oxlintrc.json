@@ -1,0 +1,104 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+
+  "globals": {
+    "mw": "readonly",
+    "$": "readonly",
+    "jQuery": "readonly",
+    "OO": "readonly"
+  },
+
+  "plugins": ["import"],
+
+  "jsPlugins": ["oxlint-plugin-eslint"],
+
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+
+  "rules": {
+    "no-undef": "error",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "no-console": "warn",
+    "no-debugger": "error",
+    "eqeqeq": ["error", "always"],
+    "no-eval": "error",
+    "no-var": "error",
+    "prefer-template": "off",
+
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "SharedArrayBuffer",
+        "message": "SharedArrayBuffer is blocked in MW (COOP/COEP headers not set by ResourceLoader). Use plain ArrayBuffer."
+      },
+      {
+        "name": "require",
+        "message": "'require' is not a global in MW. Use mw.loader.using() for async dependency loading."
+      }
+    ],
+
+    "import/no-amd": "error",
+    "import/no-commonjs": "error",
+
+    "eslint-js/no-restricted-syntax": [
+      "warn",
+
+      {
+        "selector": "LogicalExpression[operator='??']",
+        "message": "Nullish coalescing (??) is rejected by the MW linter. Use a ternary or || instead."
+      },
+      {
+        "selector": "AssignmentExpression[operator='??=']",
+        "message": "Nullish assignment (??=) is rejected by the MW linter Use an explicit if-check instead."
+      },
+
+      {
+        "selector": "ChainExpression",
+        "message": "Optional chaining (?.) is rejected by the MW linter. Use explicit && guards instead."
+      },
+
+      {
+        "selector": "PropertyDefinition[key.type='PrivateIdentifier']",
+        "message": "Private class fields (#x) are rejected by the MW linter. Use a constructor-assigned property or WeakMap for clarity."
+      },
+      {
+        "selector": "MethodDefinition[key.type='PrivateIdentifier']",
+        "message": "Private class methods (#m) are rejected by the MW linter. Use a module-scoped function or WeakMap pattern."
+      },
+
+      {
+        "selector": "MetaProperty[meta.name='import'][property.name='meta']",
+        "message": "There is no module graph in MW, so import.meta is not available. Use mw.loader.using() instead."
+      },
+      {
+        "selector": "ImportExpression",
+        "message": "Dynamic import() has no module graph in MW. Use mw.loader.using() instead."
+      }
+    ]
+  },
+
+  "ignorePatterns": ["dist/**", "node_modules/**", "*.min.js"],
+
+  "overrides": [
+    {
+      "files": ["src/**/*.ts"],
+      "plugins": ["import", "typescript"],
+      "rules": {
+        "typescript/no-explicit-any": "warn"
+      }
+    },
+    {
+      "files": ["src/ve/**/*.{js,ts}", "src/**/*.ve.{js,ts}"],
+      "globals": {
+        "ve": "readonly"
+      }
+    }
+  ]
+}

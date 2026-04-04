@@ -1,0 +1,57 @@
+/*! 
+ * Citizen skin CSS
+ *
+ * This source code has been compiled by an external process.
+ * Please don't edit this page directly unless you really need it.
+ * If you do, submit your changes upstream to the repo so they're not lost
+ * @see https://github.com/wwm-w/packqi
+ *
+ * Based on the modifications by coasterpedia.net
+ */
+@import "citizen/colors.css";
+@import "citizen/sidebar.css";
+@import "citizen/mobile.css";
+
+/* Hotcat styles */
+
+.nav-card__foreground {
+  background: oklch(
+    var(--color-progressive-oklch__l) var(--color-progressive-oklch__c)
+      var(--color-progressive-oklch__h) / 80%
+  );
+}
+
+.oo-ui-windowManager-modal > .oo-ui-dialog {
+  z-index: 500;
+}
+.citizen-header {
+  /* Change header color */
+  background-color: var(--color-progressive) !important;
+}
+
+/* Tweak header icon to work better with primary color header */
+
+.mw-header .cdx-button--icon-only svg,
+#pt-notifications-alert > a,
+#pt-notifications-notice > a,
+#pt-notifications-alert .citizen-ui-icon,
+.citizen-header__logo > a:hover > span,
+.citizen-search .citizen-dropdown-summary,
+#citizen-preferences-details .citizen-ui-icon,
+#pt-notifications-notice .citizen-ui-icon,
+.citizen-userMenu .citizen-dropdown-summary .citizen-ui-icon,
+#pt-notifications-alert .mw-echo-notifications-badge,
+#pt-notifications-notice .mw-echo-notifications-badge {
+  /* Make icon always solid */
+  --opacity-icon-base: 1;
+  color: var(--color-surface-0);
+}
+/* mobile */
+.citizen-drawer .citizen-dropdown-summary > .citizen-ui-icon > span {
+  background-color: var(--color-surface-0);
+}
+
+a {
+  /* Make links blue */
+  --color-link: #36c;
+}

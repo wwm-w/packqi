@@ -1,0 +1,102 @@
+/*! sidebar.css */
+@media screen and (min-width: 1120px) {
+  :root {
+    --fixed-menu-width: 240px;
+  }
+
+  .citizen-page-container {
+    /* Reserve space for drawer */
+    margin-left: calc(var(--header-size) + var(--fixed-menu-width));
+    padding-inline: 0 !important;
+  }
+
+  .citizen-drawer .citizen-dropdown-details {
+    /* Hide drawer button */
+    display: none;
+  }
+
+  .citizen-dropdown .citizen-menu__card,
+  .citizen-dropdown .citizen-menu__card .citizen-ui-icon {
+    content-visibility: visible;
+  }
+
+  .citizen-drawer__card {
+    bottom: 0;
+    /* Put drawer behind other header cards */
+    z-index: -1 !important;
+    margin: 0;
+    /* Compensate header border */
+    margin-left: 1px;
+    padding: 0;
+    min-width: auto !important;
+    width: var(--fixed-menu-width);
+    max-height: none;
+    border: 0;
+    border-right: 1px solid var(--border-color-base);
+    border-radius: 0;
+    background-color: var(--color-surface-0);
+    box-shadow: none;
+    /* Force drawer to show */
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    visibility: visible !important;
+    left: 56px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .citizen-drawer__card > * {
+    /* Force drawer content to show */
+    opacity: 1 !important;
+  }
+
+  .citizen-drawer__header {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+
+  .citizen-sticky-header-container {
+    margin-left: calc(var(--header-size) + var(--fixed-menu-width));
+  }
+
+  .citizen-drawer__logo {
+    /* Hide drawer header logo */
+    display: none;
+  }
+
+  .citizen-drawer__siteinfo .mw-logo-wordmark {
+    font-size: 1.25rem;
+  }
+
+  .citizen-siteStats {
+    font-size: 0.8125rem;
+  }
+  /*
+    #citizen-siteStats__item--images,
+    #citizen-siteStats__item--users {
+        display: none;
+    }
+   */
+  .citizen-drawer__menu {
+    padding-left: var(--space-xs);
+    padding-right: var(--space-xs);
+    grid-template-columns: 1fr;
+  }
+
+  .citizen-toc-enabled {
+    --width-page: calc(var(--width-layout) + var(--space-lg));
+  }
+}
+@media screen and (min-width: 1000px) {
+  .citizen-page-sidebar {
+    display: none !important;
+  }
+  .citizen-body-container {
+    grid-template-columns: minmax(0, var(--width-layout)) !important;
+    grid-template-areas: "content" "footer" !important;
+  }
+  .citizen-page-header-inner {
+    max-width: var(--width-layout) !important;
+  }
+}

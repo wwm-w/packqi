@@ -1,0 +1,24 @@
+{
+  "name": "packqi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MediaWiki-friendly CSS and JS bundler, linter and formatter",
+  "type": "module",
+  "scripts": {
+    "build": "tsup && pnpm run css",
+    "css": "pnpm run css:citizen && pnpm run css:common",
+    "css:citizen": "lightningcss --bundle --targets \">= 0.25%\" src/css/citizen.css -o dist/citizen.css",
+    "css:common": "lightningcss --bundle --targets \">= 0.25%\" src/css/common.css -o dist/common.css",
+    "lint": "oxlint",
+    "format": "oxfmt"
+  },
+  "dependencies": {
+    "lightningcss-cli": "^1.32.0",
+    "oxfmt": "^0.43.0",
+    "oxlint": "^1.58.0",
+    "oxlint-plugin-eslint": "^1.58.0",
+    "tsup": "^8.5.1",
+    "types-mediawiki": "^2.0.0"
+  },
+  "packageManager": "pnpm@10.30.3"
+}

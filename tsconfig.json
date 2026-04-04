@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // Type-check at a modern level — tsup/esbuild handles the actual downleveling.
+    // ES2023 gives us types for toReversed, toSorted, Set methods, etc.
+    "target": "ES2023",
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable",
+      "ESNext.BigInt",
+      "ESNext.Iterator" // Iterator.from + iterator helpers
+    ],
+
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    // tsup handles emit
+    "noEmit": true,
+    "declaration": false,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "removeComments": false,
+    
+    "rootDir": "src",
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true
+  },
+  "include": ["src/**/*.ts", "node_modules/types-mediawiki/**/*.ts"],
+  "exclude": ["dist"]
+}

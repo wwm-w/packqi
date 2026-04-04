@@ -1,0 +1,170 @@
+/*! 
+ * Citizen skin CSS
+ *
+ * This source code has been compiled by an external process.
+ * Please don't edit this page directly unless you really need it.
+ * If you do, submit your changes upstream to the repo so they're not lost
+ * @see https://github.com/wwm-w/packqi
+ *
+ * Based on the modifications by coasterpedia.net
+ */
+/*! sidebar.css */
+:root {
+  --color-progressive-oklch__l: 68.11%;
+  --color-progressive-oklch__c: .1827;
+  --color-progressive-oklch__h: 135.19;
+  --color-surface-0-oklch__l: 100%;
+  --color-surface-1-oklch__l: 100%;
+  --color-surface-1-oklch__c: 0;
+  --color-surface-2-oklch__c: 0;
+  --color-visited: #36c;
+}
+
+:root.skin-theme-clientpref-night {
+  --color-surface-0-oklch__l: 16%;
+  --color-surface-1-oklch__l: calc(var(--color-surface-0-oklch__l) + var(--delta-lightness-surface-base));
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root.skin-theme-clientpref-os {
+    --color-surface-0-oklch__l: 16%;
+    --color-surface-1-oklch__l: calc(var(--color-surface-0-oklch__l) + var(--delta-lightness-surface-base));
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  :root {
+    --fixed-menu-width: 240px;
+  }
+
+  .citizen-page-container {
+    margin-left: calc(var(--header-size) + var(--fixed-menu-width));
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .citizen-drawer .citizen-dropdown-details {
+    display: none;
+  }
+
+  .citizen-dropdown .citizen-menu__card, .citizen-dropdown .citizen-menu__card .citizen-ui-icon {
+    content-visibility: visible;
+  }
+
+  .citizen-drawer__card {
+    width: var(--fixed-menu-width);
+    border: 0;
+    border-right: 1px solid var(--border-color-base);
+    background-color: var(--color-surface-0);
+    max-height: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0 0 0 1px;
+    padding: 0;
+    bottom: 0;
+    left: 56px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: -1 !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    min-width: auto !important;
+    transform: none !important;
+  }
+
+  .citizen-drawer__card > * {
+    opacity: 1 !important;
+  }
+
+  .citizen-drawer__header {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+
+  .citizen-sticky-header-container {
+    margin-left: calc(var(--header-size) + var(--fixed-menu-width));
+  }
+
+  .citizen-drawer__logo {
+    display: none;
+  }
+
+  .citizen-drawer__siteinfo .mw-logo-wordmark {
+    font-size: 1.25rem;
+  }
+
+  .citizen-siteStats {
+    font-size: .8125rem;
+  }
+
+  .citizen-drawer__menu {
+    padding-left: var(--space-xs);
+    padding-right: var(--space-xs);
+    grid-template-columns: 1fr;
+  }
+
+  .citizen-toc-enabled {
+    --width-page: calc(var(--width-layout) + var(--space-lg));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .citizen-page-sidebar {
+    display: none !important;
+  }
+
+  .citizen-body-container {
+    grid-template-columns: minmax(0, var(--width-layout)) !important;
+    grid-template-areas: "content"
+                         "footer" !important;
+  }
+
+  .citizen-page-header-inner {
+    max-width: var(--width-layout) !important;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .hide-on-mobile, .action-edit .mw-page-title-main, .action-edit .page-actions, .action-edit .infobox-video__content {
+    display: none;
+  }
+}
+
+.elementbox-wide {
+  width: 100% !important;
+}
+
+.citizen-header .oo-ui-popupWidget {
+  z-index: 300;
+}
+
+.ve-init-mw-desktopArticleTarget-toolbar > .oo-ui-toolbar-bar > .oo-ui-toolbar-tools:first-child {
+  display: inline;
+}
+
+.nav-card__foreground {
+  background: oklch(var(--color-progressive-oklch__l) var(--color-progressive-oklch__c)
+      var(--color-progressive-oklch__h) / 80%);
+}
+
+.oo-ui-windowManager-modal > .oo-ui-dialog {
+  z-index: 500;
+}
+
+.citizen-header {
+  background-color: var(--color-progressive) !important;
+}
+
+.mw-header .cdx-button--icon-only svg, #pt-notifications-alert > a, #pt-notifications-notice > a, #pt-notifications-alert .citizen-ui-icon, .citizen-header__logo > a:hover > span, .citizen-search .citizen-dropdown-summary, #citizen-preferences-details .citizen-ui-icon, #pt-notifications-notice .citizen-ui-icon, .citizen-userMenu .citizen-dropdown-summary .citizen-ui-icon, #pt-notifications-alert .mw-echo-notifications-badge, #pt-notifications-notice .mw-echo-notifications-badge {
+  --opacity-icon-base: 1;
+  color: var(--color-surface-0);
+}
+
+.citizen-drawer .citizen-dropdown-summary > .citizen-ui-icon > span {
+  background-color: var(--color-surface-0);
+}
+
+a {
+  --color-link: #36c;
+}

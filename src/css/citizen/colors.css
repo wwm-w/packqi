@@ -1,0 +1,27 @@
+:root {
+  /* Set Coasterpedia primary color */
+  --color-progressive-oklch__l: 68.11%;
+  --color-progressive-oklch__c: 0.1827;
+  --color-progressive-oklch__h: 135.19;
+  --color-surface-0-oklch__l: 100%;
+  --color-surface-1-oklch__l: 100%;
+  --color-surface-1-oklch__c: 0;
+  --color-surface-2-oklch__c: 0;
+  --color-visited: #36c;
+}
+
+:root.skin-theme-clientpref-night {
+  --color-surface-0-oklch__l: 16%;
+  --color-surface-1-oklch__l: calc(
+    var(--color-surface-0-oklch__l) + var(--delta-lightness-surface-base)
+  );
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root.skin-theme-clientpref-os {
+    --color-surface-0-oklch__l: 16%;
+    --color-surface-1-oklch__l: calc(
+      var(--color-surface-0-oklch__l) + var(--delta-lightness-surface-base)
+    );
+  }
+}

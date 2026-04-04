@@ -1,0 +1,18 @@
+@media screen and (max-width: 720px) {
+  .hide-on-mobile,
+  .action-edit .mw-page-title-main,
+  .action-edit .page-actions,
+  .action-edit .infobox-video__content {
+    display: none;
+  }
+}
+.elementbox-wide {
+  /* wide elementbox can approach full width of phone screen, so just make it 100% */
+  width: 100% !important;
+}
+.citizen-header .oo-ui-popupWidget {
+  z-index: 300; /* more than the header (200) but less than the windows in the VisualEditor (500) */
+}
+.ve-init-mw-desktopArticleTarget-toolbar > .oo-ui-toolbar-bar > .oo-ui-toolbar-tools:first-child {
+  display: inline;
+}
