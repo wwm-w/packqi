@@ -4,6 +4,10 @@ MediaWiki-friendly CSS and JS bundler, linter, and formatter.
 
 Produces deployment-ready assets for a MediaWiki wiki. Source is written in modern TypeScript and CSS; the build step downlevels output to what MediaWiki's JS/CSS pipeline can actually parse.
 
+You get a linter as well that will scream at you if you attempt any MW-incompatible JS code, even if it does support pollyfills they look a bit ugly.
+
+There's, technically, support for bundling ESM NPM dependencies along with your JS but be careful with the size.
+
 > [!NOTE]
 > This was made specifically for the Where Winds Meet Wiki and MediaWiki 1.43+. You can fork this repository and adapt it to your needs. If there's enough interest, I may refactor into into an agnostic package in the future.
 
